@@ -16,6 +16,7 @@ export default [
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
       },
+ 
     },
     settings: { react: { version: '18.3' } },
     plugins: {
@@ -33,6 +34,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/prop-types": 0
     },
   },
 ]

@@ -1,8 +1,22 @@
+import { Route, Routes } from "react-router-dom";
+import Ath from "./pages/Ath";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+import CompleteProfile from "./pages/CompleteProfile";
 
+const queryClient = new QueryClient();
 function App() {
   return (
-    <h1 className="font-bold  text-3xl bg-primary-900 bg-opacity-25 text-success">شروع پروژه</h1>
-  )
+    <div className='container xl:max-w-screen-xl'>
+      <QueryClientProvider client={queryClient}>
+        <Toaster />
+        <Routes>
+          <Route path='/auth' element={<Ath />} />
+          <Route path='/complete-profile' element={<CompleteProfile />} />
+        </Routes>
+      </QueryClientProvider>
+    </div>
+  );
 }
 
-export default App
+export default App;
