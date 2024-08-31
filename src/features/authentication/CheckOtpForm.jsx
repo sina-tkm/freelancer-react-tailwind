@@ -12,7 +12,7 @@ function CheckOtpForm({ phoneNumber, onBack, onResendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_INTIAL);
   const navigate = useNavigate();
-  const { isPending, error, data, mutateAsync } = useMutation({
+  const { isPending, mutateAsync } = useMutation({
     mutationFn: checkOtp,
   });
 
@@ -31,11 +31,14 @@ function CheckOtpForm({ phoneNumber, onBack, onResendOtp, otpResponse }) {
     try {
       const { message, user } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (user.isActive) {
-        // push role page
-      } else {
-        navigate("/complete-profile");
+      if (!user.isActive) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تایید است", { icon: "👏" });
+        return;
       }
+      if (user.role === "OWNER") navigate("/owner");
+      if (user.role === "FREELANCER") navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
