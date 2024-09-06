@@ -1,21 +1,33 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "./style/ui/NotFound";
-import Ath from "./pages/Ath";
+import Auth from "./pages/Auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./pages/CompleteProfile";
 import Home from "./pages/Home";
+import AppLayOut from "./style/ui/AppLayOut";
+import Projects from "./pages/Projects";
+import Project from "./pages/Project";
+import OwnerDashboard from "./pages/OwnerDashboard";
 
 const queryClient = new QueryClient();
 function App() {
   return (
-    <div className='container xl:max-w-screen-xl'>
+    <div>
       <QueryClientProvider client={queryClient}>
         <Toaster />
         <Routes>
-          <Route path='/auth' element={<Ath />} />
+          <Route path='/auth' element={<Auth />} />
           <Route path='/complete-profile' element={<CompleteProfile />} />
+          <Route path='/owner' element={<AppLayOut />}>
+            <Route index element={<Navigate to='dashboard' replace />} />
+            <Route path='dashboard' element={<OwnerDashboard />} />
+            <Route path='projects' element={<Projects />} />
+            <Route path='projects/:id' element={<Project />} />
+          </Route>
+
           <Route path='/' element={<Home />} />
+
           <Route path='*' element={<NotFound />} />
         </Routes>
       </QueryClientProvider>
