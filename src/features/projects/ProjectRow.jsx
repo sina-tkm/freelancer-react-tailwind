@@ -1,9 +1,18 @@
+import { useState } from "react";
+import Modal from "../../style/ui/Modal";
 import Table from "../../style/ui/Table";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import toPersianNumbers from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
+import { HiOutlineTrash } from "react-icons/hi";
+import { TbPencilMinus } from "react-icons/tb";
+import ConfirmDelete from "../../style/ui/ConfirmDelete";
+import useRemoveProject from "./useREmoveProject";
 
 function ProjectRow({ project, index }) {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const { isDeleting, removeProject } = useRemoveProject();
   return (
     <Table.row key={project._id}>
       <th>{index + 1}</th>
@@ -28,7 +37,43 @@ function ProjectRow({ project, index }) {
           <span className='badge badge--danger'>بسته</span>
         )}
       </th>
-      <th>...</th>
+      <th>
+        <div className='flex gap-x-4'>
+          <>
+            <button onClick={() => setIsEditOpen(true)}>
+              <TbPencilMinus className='w-5 h-5 text-primary-900' />
+            </button>
+            <Modal
+              title={`ویرایش ${project.title}`}
+              open={isEditOpen}
+              onClose={() => setIsEditOpen(false)}
+            >
+              this is Modal ...
+            </Modal>
+          </>
+          <>
+            <button onClick={() => setIsDeleteOpen(true)}>
+              <HiOutlineTrash className='w-5 h-5 text-error' />
+            </button>
+            <Modal
+              title={` حذف ${project.title}`}
+              open={isDeleteOpen}
+              onClose={() => setIsDeleteOpen(false)}
+            >
+              <ConfirmDelete
+                resourceName={project.title}
+                onclose={() => setIsDeleteOpen(false)}
+                onConfirm={() =>
+                  removeProject(project._id, {
+                    onSuccess: () => setIsDeleteOpen(false),
+                  })
+                }
+                disabled={false}
+              />
+            </Modal>
+          </>
+        </div>
+      </th>
     </Table.row>
   );
 }

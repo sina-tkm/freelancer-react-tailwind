@@ -1,5 +1,5 @@
 import { HiArrowRight } from "react-icons/hi";
-import useNavigteBack from "../../services/useMoveBack";
+import useNavigteBack from "../../hooks/useMoveBack";
 function NotFound() {
   const moveBack = useNavigteBack();
 
