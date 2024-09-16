@@ -1,14 +1,23 @@
-function InputRadio({ name, value, label, id, onChange ,checked }) {
+function InputRadio({
+  name,
+  value,
+  register,
+  label,
+  watch,
+  validationSchema = {},
+  id,
+ 
+}) {
   return (
-    <div className='flex gap-x-2 text-secondary-600 items-center'>
+    <div className='flex items-center gap-x-2 text-secondary-600'>
       <input
+        className='cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-primary-900 focus:ring-1'
         type='radio'
         name={name}
-        value={value}
         id={id}
-        className=' w-4 h-4 cursor-pointer form-radio'
-        onChange={onChange}
-        checked={checked}
+        value={value}
+        {...register(name, validationSchema)}
+        checked={watch(name) === value}
       />
       <label htmlFor={id}>{label}</label>
     </div>
