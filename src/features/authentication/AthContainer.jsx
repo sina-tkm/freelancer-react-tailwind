@@ -19,7 +19,6 @@ function AthContainer() {
   });
 
   const sendOtpHandler = async (data) => {
-    console.log(data)
     try {
       const { message } = await mutateAsync(data);
       toast.success(message);

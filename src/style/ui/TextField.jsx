@@ -13,9 +13,9 @@ function TextField({
         {label} {required && <span className='text-error'>*</span>}
       </label>
       <input
-        {...register(name, validationSchema)}
         id={name}
         name={name}
+        {...register(name, validationSchema)}
         type={type}
         className='textField__input'
         autoComplete='off'
