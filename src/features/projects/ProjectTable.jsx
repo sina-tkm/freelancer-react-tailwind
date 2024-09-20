@@ -6,10 +6,10 @@ import ProjectRow from "./ProjectRow";
 function ProjectTable() {
   const { isLoading, projects } = useOwnerProject();
 
+
   if (isLoading) return <Loading />;
   if (!projects.length) return <Empty resouseName=' پروژه ای' />;
   return (
-    
     <Table>
       <Table.Header>
         <th>#</th>

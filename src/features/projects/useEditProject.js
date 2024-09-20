@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createProjectApi } from "../../services/projectService";
+import { editProjectApi } from "../../services/projectService";
 import toast from "react-hot-toast";
-export default function useCreateProject() {
+export default function useEditProject() {
   const queryClient = useQueryClient();
-  const { isPending: isCreating, mutate: craeteProject } = useMutation({
-    mutationFn: createProjectApi,
+  const { isPending: isEditing, mutate: editProject } = useMutation({
+    mutationFn: editProjectApi,
     onSuccess: (data) => {
       toast.success(data.message);
       queryClient.invalidateQueries({
@@ -12,9 +12,10 @@ export default function useCreateProject() {
       });
     },
     onError: (err) => {
-      const errorMessage = err?.response?.data?.statusCode || "An error occurred";
+      const errorMessage =
+        err?.response?.data?.statusCode || "An error occurred";
       toast.error(errorMessage);
     },
   });
-  return { isCreating, craeteProject };
+  return { isEditing, editProject };
 }

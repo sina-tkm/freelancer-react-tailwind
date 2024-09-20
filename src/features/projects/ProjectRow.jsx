@@ -8,6 +8,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import ConfirmDelete from "../../style/ui/ConfirmDelete";
 import useRemoveProject from "./useREmoveProject";
+import CreateProjectForm from "./CreateProjectForm";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -48,7 +49,10 @@ function ProjectRow({ project, index }) {
               open={isEditOpen}
               onClose={() => setIsEditOpen(false)}
             >
-              this is Modal ...
+              <CreateProjectForm
+                onClose={() => setIsEditOpen(false)}
+                projectToEdit={project}
+              />
             </Modal>
           </>
           <>
