@@ -9,19 +9,20 @@ import { TbPencilMinus } from "react-icons/tb";
 import ConfirmDelete from "../../style/ui/ConfirmDelete";
 import useRemoveProject from "./useREmoveProject";
 import CreateProjectForm from "./CreateProjectForm";
+import ToggleProjectStatus from "./ToggleProjectStatus";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const { isDeleting, removeProject } = useRemoveProject();
+  const { removeProject } = useRemoveProject();
   return (
     <Table.row key={project._id}>
-      <th>{index + 1}</th>
-      <th>{truncateText(project.title, 30)}</th>
-      <th>{project.category.title}</th>
-      <th>{toPersianNumbers(project.budget)}</th>
-      <th>{toLocalDateShort(project.deadline)}</th>
-      <th>
+      <td>{index + 1}</td>
+      <td>{truncateText(project.title, 30)}</td>
+      <td>{project.category.title}</td>
+      <td>{toPersianNumbers(project.budget)}</td>
+      <td>{toLocalDateShort(project.deadline)}</td>
+      <td>
         <div className='flex flex-wrap items-center gap-2 max-w-[200px]'>
           {project.tags.map((tag) => (
             <span key={tag} className='badge badge--secondary'>
@@ -29,16 +30,12 @@ function ProjectRow({ project, index }) {
             </span>
           ))}
         </div>
-      </th>
-      <th>{project.freelancer?.name || "-"}</th>
-      <th>
-        {project.status === "OPEN" ? (
-          <span className='badge badge--success'>باز</span>
-        ) : (
-          <span className='badge badge--danger'>بسته</span>
-        )}
-      </th>
-      <th>
+      </td>
+      <td>{project.freelancer?.name || "-"}</td>
+      <td>
+        <ToggleProjectStatus project={project} />
+      </td>
+      <td>
         <div className='flex gap-x-4'>
           <>
             <button onClick={() => setIsEditOpen(true)}>
@@ -77,7 +74,10 @@ function ProjectRow({ project, index }) {
             </Modal>
           </>
         </div>
-      </th>
+      </td>
+      <td>
+        
+      </td>
     </Table.row>
   );
 }
