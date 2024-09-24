@@ -27,7 +27,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
       title,
       description,
       budget,
-      category:category._id
+      category: category._id,
     };
   }
   const {

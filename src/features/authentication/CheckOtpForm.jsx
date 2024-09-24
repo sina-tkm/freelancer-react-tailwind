@@ -40,7 +40,7 @@ function CheckOtpForm({ phoneNumber, onBack, onResendOtp, otpResponse }) {
       if (user.role === "OWNER") navigate("/owner");
       if (user.role === "FREELANCER") navigate("/freelancer");
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "خطایی رخ داده است");
     }
   };
   return (

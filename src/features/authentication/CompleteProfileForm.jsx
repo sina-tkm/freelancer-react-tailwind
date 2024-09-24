@@ -21,7 +21,6 @@ function CompleteProfileForm() {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const { message, user } = await mutateAsync(data);
       toast.success(message);

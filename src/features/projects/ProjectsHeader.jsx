@@ -3,7 +3,7 @@ import Modal from "../../style/ui/Modal";
 import CreateProjectForm from "./CreateProjectForm";
 import { HiOutlinePlus } from "react-icons/hi";
 
-function ProjectHeader() {
+function ProjectsHeader() {
   const [open, setOpen] = useState(false);
   return (
     <div className='flex items-center justify-between mb-8'>
@@ -13,7 +13,7 @@ function ProjectHeader() {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <CreateProjectForm onClose={()=>setOpen(false )}/>
+        <CreateProjectForm onClose={() => setOpen(false)} />
       </Modal>
       <button
         onClick={() => setOpen(true)}
@@ -26,4 +26,4 @@ function ProjectHeader() {
   );
 }
 
-export default ProjectHeader;
+export default ProjectsHeader;

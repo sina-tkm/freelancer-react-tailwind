@@ -1,4 +1,4 @@
-import ProjectsHeader from "../features/projects/ProjectHeader";
+import ProjectsHeader from "../features/projects/ProjectsHeader";
 import ProjectTable from "../features/projects/ProjectTable";
 
 function Projects() {

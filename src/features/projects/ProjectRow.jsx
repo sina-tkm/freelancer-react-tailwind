@@ -4,12 +4,13 @@ import Table from "../../style/ui/Table";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import toPersianNumbers from "../../utils/toPersianNumbers";
 import truncateText from "../../utils/truncateText";
-import { HiOutlineTrash } from "react-icons/hi";
+import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import ConfirmDelete from "../../style/ui/ConfirmDelete";
 import useRemoveProject from "./useREmoveProject";
 import CreateProjectForm from "./CreateProjectForm";
 import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -76,7 +77,9 @@ function ProjectRow({ project, index }) {
         </div>
       </td>
       <td>
-        
+        <Link to={project._id} className='flex justify-center'>
+          <HiEye className='w-5 h-5 text-primary-500' />
+        </Link>
       </td>
     </Table.row>
   );
