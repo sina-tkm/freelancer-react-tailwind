@@ -5,12 +5,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./pages/CompleteProfile";
 import Home from "./pages/Home";
-import AppLayOut from "./style/ui/AppLayOut";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import DarkModeProvider from "./contexts/DarkModeContext";
-import OwnerLayOut from "./features/OwnerLayOut";
+import OwnerLayOut from "./features/owner/OwnerLayOut";
+import FreelancerDashboard from "./pages/FreelancerDashboard";
+import Proposals from "./pages/Proposals";
+import SubmittedProject from "./pages/SubmittedProject";
+import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 
 const queryClient = new QueryClient();
 function App() {
@@ -28,9 +31,13 @@ function App() {
               <Route path='projects' element={<Projects />} />
               <Route path='projects/:id' element={<Project />} />
             </Route>
-
+            <Route path='freelancer' element={<FreelancerLayout />}>
+              <Route index element={<Navigate to='dashboard' replace />} />
+              <Route path='dashboard' element={<FreelancerDashboard />} />
+              <Route path='proposals' element={<Proposals />} />
+              <Route path='projects' element={<SubmittedProject />} />
+            </Route>
             <Route path='/' element={<Home />} />
-
             <Route path='*' element={<NotFound />} />
           </Routes>
         </QueryClientProvider>

@@ -1,10 +1,10 @@
-import useOwnerProject from "./useOwnerProject";
+import useOwnerProjects from "./useOwnerProjects";
 import Loading from "../../style/ui/Loading";
 import Empty from "../../style/ui/Empty";
 import Table from "../../style/ui/Table";
 import ProjectRow from "./ProjectRow";
 function ProjectTable() {
-  const { isLoading, projects } = useOwnerProject();
+  const { isLoading, projects } = useOwnerProjects();
 
   if (isLoading) return <Loading />;
   if (!projects.length) return <Empty resouseName=' پروژه ای' />;
