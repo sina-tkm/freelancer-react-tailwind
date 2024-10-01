@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import changeProposalStatusApi from "../../services/prposalService";
+import { changeProposalStatusApi } from "../../services/prposalService";
 export default function useChangeProposalStatus() {
   const { isPending: isUpdating, mutate: changeProposalStatus } = useMutation({
     mutationFn: changeProposalStatusApi,

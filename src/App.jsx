@@ -25,12 +25,14 @@ function App() {
           <Routes>
             <Route path='/auth' element={<Auth />} />
             <Route path='/complete-profile' element={<CompleteProfile />} />
+
             <Route path='/owner' element={<OwnerLayOut />}>
               <Route index element={<Navigate to='dashboard' replace />} />
               <Route path='dashboard' element={<OwnerDashboard />} />
               <Route path='projects' element={<Projects />} />
               <Route path='projects/:id' element={<Project />} />
             </Route>
+            
             <Route path='freelancer' element={<FreelancerLayout />}>
               <Route index element={<Navigate to='dashboard' replace />} />
               <Route path='dashboard' element={<FreelancerDashboard />} />

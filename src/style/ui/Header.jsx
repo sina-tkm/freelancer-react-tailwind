@@ -9,7 +9,7 @@ function Header() {
         className={`container  xl:max-w-screen-lg flex items-center justify-end gap-x-8
         ${isLoading ? " opacity-50blur-sm" : ""} `}
       >
-        <UserAvatar />
+        <UserAvatar user={user} />
         <HeaderMenu />
       </div>
     </div>
