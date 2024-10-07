@@ -30,9 +30,9 @@ function ProposalRow({ proposal, index }) {
       </td>
       <td>{proposal.duration}روز</td>
       <td>{proposal.price}</td>
-      <td className={`badge ${statusStyle[status].className} my-4`}>
+      <span className={`badge ${statusStyle[status].className} my-4`}>
         {statusStyle[status].label}
-      </td>
+      </span>
       <td>
         <Modal
           title='تغییر وضعیت درخواست'

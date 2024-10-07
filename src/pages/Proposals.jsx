@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import ProposalTable from "../features/proposal/ProposalTable";
+
 
 function Proposals() {
   return (
-    <div>Proposals</div>
-  )
+    <div>
+      <h1>پروپوزال های شما </h1>
+      <ProposalTable />
+    </div>
+  );
 }
 
-export default Proposals
+export default Proposals;

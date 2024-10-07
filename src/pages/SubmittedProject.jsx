@@ -1,9 +1,13 @@
-
+import ProjectHeader from "../features/freelancer/project/ProjectHeader";
+import ProjectTable from "../features/freelancer/project/ProjectTable";
 
 function SubmittedProject() {
   return (
-    <div>SubmittedProject</div>
-  )
+    <div>
+      <ProjectHeader />
+      <ProjectTable />
+    </div>
+  );
 }
 
-export default SubmittedProject
+export default SubmittedProject;
